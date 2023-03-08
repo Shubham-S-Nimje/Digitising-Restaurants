@@ -5,11 +5,8 @@ const Formdata = () => {
     const [orderid, Setorderid] = useState('')
     const [price, Setprice] = useState('')
     const [ordereddish, Setordereddish] = useState('')
-    const [selectedTable, SetselectedTable] = useState('food')
+    const [selectedTable, SetselectedTable] = useState('Table1')
     const {orders} = useContext(Contextdata);
-    // const [table2, Settable2] = useState('')
-    // const [table3, Settable3] = useState('')
-
 
     const{addorders} = useContext(Contextdata);
 
@@ -44,24 +41,27 @@ const Formdata = () => {
         Setorderid('')
         Setprice('')
         Setordereddish('')
-        SetselectedTable('food')
+        localStorage.setItem('Table', JSON.stringify(orders))
+
     }
-    useEffect(() => {
-        localStorage.setItem('orders', JSON.stringify(orders))
-    },[orders])
+
+    // useEffect(() => {
+    //     localStorage.setItem(selectedTable, JSON.stringify(orders))
+    // },[orders])
+
   return (
     <form onSubmit={OnSubmitHandler}>
-      <label> Product Id : </label>
+      <label> Choose Id : </label>
       <input type='number' 
       value={orderid} 
       onChange={OnOrderIdChangeHandler}></input><br />
 
-      <label> Selling Price : </label>
+      <label> Choose Price : </label>
       <input type='number' 
       value={price}
       onChange={OnPriceChangeHandler}></input><br />
 
-      <label> Product Name : </label>
+      <label> Choose Dishname : </label>
       <input 
       type='text' 
       value={ordereddish}
@@ -70,11 +70,11 @@ const Formdata = () => {
       <div onChange={OntableChangeHandler}
       value={selectedTable}>
       <label
-      > Choose Category : </label>
+      > ChooseTable : </label>
       <select>
-        <option value='food'> Food </option>
-        <option value='electronics'> Electronics </option>
-        <option value='skincare'> Skincare </option>
+        <option value='Table1'> Table1 </option>
+        <option value='Table2'> Table2 </option>
+        <option value='Table3'> Table3 </option>
       </select >
       </div><br />
       <button>

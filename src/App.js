@@ -4,7 +4,7 @@ import Displaydata from './Components/Displaydata';
 import Formdata from './Components/Formdata';
 
 const getfromlocal = () => {
-  let data = localStorage.getItem('orders')
+  let data = localStorage.getItem('Table')
   if(data){
     return JSON.parse(data)
   }
@@ -12,6 +12,7 @@ const getfromlocal = () => {
     return [];
   }
 }
+
 function App() {
   const [orders, Setorders] = useState(getfromlocal());
 
