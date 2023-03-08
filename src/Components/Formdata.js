@@ -1,13 +1,15 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import Contextdata from './Context/Context'
 
 const Formdata = () => {
     const [orderid, Setorderid] = useState('')
     const [price, Setprice] = useState('')
     const [ordereddish, Setordereddish] = useState('')
-    const [selectedTable, SetselectedTable] = useState('table1')
+    const [selectedTable, SetselectedTable] = useState('food')
+    const {orders} = useContext(Contextdata);
     // const [table2, Settable2] = useState('')
     // const [table3, Settable3] = useState('')
+
 
     const{addorders} = useContext(Contextdata);
 
@@ -34,37 +36,32 @@ const Formdata = () => {
         console.log(orderid)
         console.log(price)
         console.log(ordereddish)
-        
-
-        const obj = {
-            orderid,
-            price,
-            ordereddish,
-            selectedTable
-        }
-
-        console.log(selectedTable)
 
         addorders(orderid,
             price,
             ordereddish, selectedTable);
 
-        localStorage.setItem(obj.orderid, JSON.stringify(obj))
-
+        Setorderid('')
+        Setprice('')
+        Setordereddish('')
+        SetselectedTable('food')
     }
+    useEffect(() => {
+        localStorage.setItem('orders', JSON.stringify(orders))
+    },[orders])
   return (
     <form onSubmit={OnSubmitHandler}>
-      <label> Unique order Id : </label>
+      <label> Product Id : </label>
       <input type='number' 
       value={orderid} 
       onChange={OnOrderIdChangeHandler}></input><br />
 
-      <label> Choose Price : </label>
+      <label> Selling Price : </label>
       <input type='number' 
       value={price}
       onChange={OnPriceChangeHandler}></input><br />
 
-      <label> Choose Dish : </label>
+      <label> Product Name : </label>
       <input 
       type='text' 
       value={ordereddish}
@@ -73,15 +70,15 @@ const Formdata = () => {
       <div onChange={OntableChangeHandler}
       value={selectedTable}>
       <label
-      > Choose Table No : </label>
+      > Choose Category : </label>
       <select>
-        <option value='table1'> Table No 1 : </option>
-        <option value='table2'> Table No 2 : </option>
-        <option value='table3'> Table No 3 : </option>
+        <option value='food'> Food </option>
+        <option value='electronics'> Electronics </option>
+        <option value='skincare'> Skincare </option>
       </select >
       </div><br />
       <button>
-        Submit</button>
+        Add Product</button>
     </form>
   )
 }

@@ -3,8 +3,17 @@ import Contextdata from './Components/Context/Context';
 import Displaydata from './Components/Displaydata';
 import Formdata from './Components/Formdata';
 
+const getfromlocal = () => {
+  let data = localStorage.getItem('orders')
+  if(data){
+    return JSON.parse(data)
+  }
+  else{
+    return [];
+  }
+}
 function App() {
-  const [orders, Setorders] = useState([]);
+  const [orders, Setorders] = useState(getfromlocal());
 
   const addorders = (neworderid, newprice, newordereddish, newselectedTable) => {
       Setorders((neworderadded) => {
@@ -16,13 +25,12 @@ function App() {
     }
 
     const delorder =(orderid)=>{
-      console.log(orderid)
-
-      const filterorders = orders.filter((element,index) => {
+    const filterorders = orders.filter((element,index) => {
         return element.orderid !== orderid
       })
-      Setorders(filterorders)
-      localStorage.removeItem(orderid)
+    Setorders(filterorders)
+    localStorage.removeItem(orderid)
+
     }
   return (
       <Contextdata.Provider value={{orders,addorders,delorder}}>
