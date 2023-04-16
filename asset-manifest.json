@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Digitising-Restaurants/static/css/main.e6c13ad2.css",
+    "main.js": "/Digitising-Restaurants/static/js/main.94ee8604.js",
+    "static/js/787.658bc779.chunk.js": "/Digitising-Restaurants/static/js/787.658bc779.chunk.js",
+    "index.html": "/Digitising-Restaurants/index.html",
+    "main.e6c13ad2.css.map": "/Digitising-Restaurants/static/css/main.e6c13ad2.css.map",
+    "main.94ee8604.js.map": "/Digitising-Restaurants/static/js/main.94ee8604.js.map",
+    "787.658bc779.chunk.js.map": "/Digitising-Restaurants/static/js/787.658bc779.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.94ee8604.js"
+  ]
+}
